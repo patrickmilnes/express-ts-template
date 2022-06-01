@@ -17,24 +17,20 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.disable('x-powered-by');
 
-app.get('/api/point/:id', (req: Request, res: Response) => {
-  res.json({ message: 'Hi from get point from id' });
+app.get('/api/:id', (req: Request, res: Response) => {
+  res.json({ message: `Getting id: ${req.params.id}` });
 });
 
-app.get('/api/point', (req: Request, res: Response) => {
-  res.json({ message: 'Hi from get all points' });
+app.post('/api/create', (req: Request, res: Response) => {
+  res.json({ message: 'Creating something' });
 });
 
-app.put('/api/point/create', (req: Request, res: Response) => {
-  res.json({ message: 'Hi from create point' });
-});
-
-app.put('/api/point/update', (req: Request, res: Response) => {
+app.put('/api/update', (req: Request, res: Response) => {
   res.json({ message: 'Hi from update point' });
 });
 
-app.delete('/api/point/:id', (req: Request, res: Response) => {
-  res.json({ message: 'Hi from delete point' });
+app.delete('/api/delete/:id', (req: Request, res: Response) => {
+  res.json({ message: `Deleting id: ${req.params.id}` });
 });
 
 app.listen(port, () => console.log(`[server] App listerning on port ${port}`));
